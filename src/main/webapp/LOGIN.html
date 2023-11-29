@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestFreshers Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: whitesmoke;
+            height: 65px;
+        }
+
+        #testlogo {
+            height: 50px;
+            padding-left: 15px;
+        }
+
+
+        .button.is-color2 {
+            background-color: #91cd67;
+            border-color: transparent;
+            color: #fff;
+            border-radius: 4px;
+            height: 40px;
+        }
+
+        .button.is-color1 {
+            background-color: #199dd3;
+            border-color: transparent;
+            color: #fff;
+            border-radius: 4px;
+            height: 40px;
+        }
+
+        .button {
+            background-color: #fff;
+            border-color: #dbdbdb;
+            border-width: 1px;
+            color: #363636;
+            cursor: pointer;
+            justify-content: center;
+            padding: calc(0.5em - 1px) 1em;
+            text-align: center;
+            white-space: nowrap;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #00d1b2;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .titleind {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        h1 {
+            color: #00d1b2;
+        }
+
+        .formval1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .formval2 {
+            background-color: #fff;
+            width: 450px;
+            height: 300px;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 0.5em 1em -0.125em hsla(0, 0%, 4%, 0.1),
+                0 0 0 1px hsla(0, 0%, 4%, 0.02);
+        }
+
+        input {
+            width: 420px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            color: #363636;
+        }
+
+        input[type="submit"] {
+            width: 100px;
+            background-color: #199dd3;
+            border: 0;
+            color: white;
+            height: 40px;
+            font-size: large;
+        }
+
+        .error {
+            color: red;
+            margin: 0;
+            text-align: left;
+        }
+
+        .res2 {
+            margin-top: 8px;
+            color: #00d1b2;
+        }
+
+        .res1 {
+            color: #00d1b2;
+        }
+
+        body {
+            background-image: radial-gradient(aqua, white);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav1">
+            <img src="https://www.karnataka.gov.in/storage/slids/1693544503.jpg" alt="Logo" id="testlogo">
+
+        </div>
+        <div>
+            <h1>GOVT OF KARNATAKA</h1>
+        </div>
+        <div class="nav2">
+            <a href="./register.html" class="button is-color1">Register</a>
+            <a href="./LOGIN.html" aria-current="page"
+                class="button is-color2 nuxt-link-exact-active nuxt-link-active">Login</a>
+        </div>
+    </nav>
+    <div class="titleind">
+        <h1 class="title1">Govt schemes Login</h1>
+    </div>
+    <div class="formval1">
+        <form id="loginForm" class="formval2" action="all.html">
+            <div>
+                <label for="aadharno">Aadhar Number</label>
+                <input type="number" id="aadharno" name="aadharno">
+                <p id="aadharError" class="error"></p>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <p id="passError" class="error"></p>
+            </div>
+            <input type="submit" value="Login">
+
+
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("#loginForm");
+            const aadharInput = document.querySelector("#aadharno");
+            const passwordInput = document.querySelector("#password");
+            const aadharError = document.querySelector("#aadharError");
+            const passError = document.querySelector("#passError");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting initially
+
+                // Fetch user data from local storage
+                const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+                // Find the user with the provided Aadhar number
+                const matchedUser = storedUsers.find(user => user.aadharno === aadharInput.value);
+
+                if (matchedUser) {
+                    // Verify the password
+                    if (matchedUser.password === passwordInput.value) {
+                        alert("Login Successful");
+                        window.location.href = "all.html"; // Redirect to the target page
+                    } else {
+                        passError.textContent = "Incorrect password";
+                    }
+                } else {
+                    aadharError.textContent = "User not found";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

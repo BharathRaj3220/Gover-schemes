@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Basic CSS for the navbar */
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li.nav-item a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li.nav-item a:hover {
+            background-color: #555;
+        }
+
+        /* Improved styling for form elements */
+        form {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Style radio buttons */
+        input[type="radio"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Style input elements */
+        input[type="text"],
+        input[type="number"],
+        input[type="radio"],
+        input[type="submit"],
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="radio"]:focus {
+            border-color: #007BFF;
+        }
+
+        /* Style submit button */
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add background gradient to the HTML */
+        html {
+            background-image: radial-gradient(aqua, white);
+        }
+
+        /* Style error messages */
+        .alert {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <ul class="navbar">
+        <li class="nav-item"><a href="#">GRUHAJYOTHI</a></li>
+    </ul>
+
+    <!-- Form with validation -->
+    <form id="gruhajyothi-form" action="nithin123" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label for="aadhar">Aadhar Card:</label>
+                </td>
+                <td>
+                    <input type="number" name="aadhar" id="aadhar" placeholder="Aadhar number" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">NAME:</label></td>
+                <td><input type="text" name="name" id="name" placeholder="NAME" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="current-bill">CURRENT BILL:</label>
+                </td>
+                <td>
+                    <input type="number" name="bill" id="current-bill" placeholder="ENTER IN UNITS" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="karnataka-resident">RESIDENT OF KARNATAKA:</label></td>
+                <td>
+                    <label for="karnataka-yes">Yes</label>
+                    <input type="radio" id="karnataka-yes" name="karnataka-resident" value="yes" required>
+                    <label for="karnataka-no">No</label>
+                    <input type="radio" id="karnataka-no" name="karnataka-resident" value="no" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ration-card">Ration card:</label></td>
+                <td><input type="text" name="ration" id="ration-card" placeholder="RATION CARD NUMBER" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('#gruhajyothi-form'); // Select the form by its ID
+
+            form.addEventListener('submit', function (event) {
+                // No need to preventDefault, form will submit if there are no errors
+
+                // Validate the form
+                const isValid = validateForm();
+
+                // If there are validation errors, prevent the form from submitting
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+
+            function validateForm() {
+                // Reset previous error messages
+                clearErrors();
+
+                // Get form inputs
+                const name = document.getElementById('name').value.trim();
+                const aadhar = document.getElementById('aadhar').value.trim();
+                const currentBill = parseFloat(document.getElementById('current-bill').value);
+                const karnatakaResident = document.querySelector('input[name="karnataka-resident"]:checked');
+                const rationCard = document.getElementById('ration-card').value.trim();
+
+                // Validation rules
+                let isValid = true;
+
+                if (aadhar.length !== 12 || !/^[0-9]+$/.test(aadhar)) {
+                    displayError('Invalid Aadhar number.');
+                    isValid = false;
+                }
+
+                if (currentBill >= 200) {
+                    displayError('Current bill should be less than 200 units.');
+                    isValid = false;
+                }
+
+                if (!karnatakaResident || karnatakaResident.value !== 'yes') {
+                    displayError('You are not eligible as a non-Karnataka resident.');
+                    isValid = false;
+                }
+
+                if (/[^a-zA-Z\s]/.test(name)) {
+                    displayError('Name should not contain special characters or numbers.');
+                    isValid = false;
+                }
+
+                if (rationCard === '') {
+                    displayError('Ration card number cannot be empty.');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            function displayError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert';
+                errorDiv.textContent = message;
+                form.appendChild(errorDiv);
+            }
+
+            function clearErrors() {
+                const errorMessages = document.querySelectorAll('.alert');
+                errorMessages.forEach(function (errorMsg) {
+                    errorMsg.remove();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

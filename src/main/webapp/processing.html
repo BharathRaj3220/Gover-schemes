@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Basic CSS for the navbar */
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li.nav-item a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li.nav-item a:hover {
+            background-color: #555;
+        }
+
+        /* Improved styling for form elements */
+        form {
+            display: none;
+            /* Hide the form initially */
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Style radio buttons */
+        input[type="radio"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Style input elements */
+        input[type="text"],
+        input[type="number"],
+        input[type="radio"],
+        input[type="submit"],
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="radio"]:focus {
+            border-color: #007BFF;
+        }
+
+        /* Style submit button */
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add background gradient to the HTML */
+        html {
+            background-image: radial-gradient(aqua, white);
+        }
+
+        /* Style error messages */
+        .alert {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Success message styling */
+        .success {
+            background-color: #91cd67;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        /* Thank you message styling */
+        .thank-you {
+            background-color: #199dd3;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+
+
+    <!-- Form with validation -->
+
+
+    <!-- Success message -->
+    <div class="success">
+        <h4> Your form has been submitted. It will take around 7 days to review.</h4>
+    </div>
+
+    <!-- Thank you message -->
+    <div class="thank-you">
+        Thank you for your submission.
+    </div>
+
+    <script>
+        // JavaScript for form validation and submission handling
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('gruhajyothi-form');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                // Your validation code here
+
+                // Assuming validation passes, show success message and hide the form
+                form.style.display = 'none';
+                showSuccessMessage();
+            });
+
+            function showSuccessMessage() {
+                const successMessage = document.querySelector('.success');
+                successMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

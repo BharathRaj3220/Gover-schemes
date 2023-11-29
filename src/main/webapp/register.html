@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestFreshers Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: whitesmoke;
+            height: 60px;
+        }
+
+        .nav2 {
+            padding-right: 20px;
+            width: 170px;
+            display: flex;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #testlogo {
+            height: 50px;
+            padding-left: 15px;
+        }
+
+        .button {
+            background-color: #fff;
+            border-color: #dbdbdb;
+            border-width: 1px;
+            color: #363636;
+            cursor: pointer;
+            justify-content: center;
+            padding: calc(0.5em - 1px) 1em;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .button.is-color1 {
+            background-color: #199dd3;
+            border-color: transparent;
+            color: #fff;
+            border-radius: 4px;
+            height: 25px;
+        }
+
+        .button.is-color2 {
+            background-color: #91cd67;
+            border-color: transparent;
+            color: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            height: 25px;
+        }
+
+        a {
+            color: #00d1b2;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .titleind {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        h1 {
+            color: #00d1b2;
+        }
+
+        #form-container {
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 96%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            color: #363636;
+        }
+
+        input[type="submit"] {
+            width: 100px;
+            background-color: #199dd3;
+            border: 0;
+            color: white;
+            height: 40px;
+            font-size: large;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin: 5px 0;
+            text-align: left;
+        }
+
+        .formval1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .formval2 {
+            background-color: #fff;
+            width: 450px;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 0.5em 1em -0.125em hsla(0, 0%, 4%, 0.1),
+                0 0 0 1px hsla(0, 0%, 4%, 0.02);
+        }
+
+        .dropdown1 select {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            color: #363636;
+            cursor: pointer;
+        }
+
+        .dropdown1 select option[disabled] {
+            color: #999;
+        }
+
+        @media screen and (max-width: 768px) {
+            #form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav1">
+            <img src="https://www.karnataka.gov.in/storage/slids/1693544503.jpg" alt="Logo" id="testlogo">
+        </div>
+        <div>
+            <h1>
+                GOVT OF KARNATAKA
+            </h1>
+        </div>
+        <div class="nav2">
+            <a href="./register.html" class="button is-color1">Register</a>
+            <a href="./LOGIN.html" aria-current="page"
+                class="button is-color2 nuxt-link-exact-active nuxt-link-active">Login</a>
+        </div>
+    </nav>
+    <div class="titleind">
+        <h1 class="title1">Govt Schemes Registration</h1>
+    </div>
+    <div class="formval1">
+        <form id="registrationForm" class="formval2">
+            <div>
+                <label for="aadharno">Aadhar Number</label>
+                <input type="number" id="aadharno" name="aadharno" />
+                <p id="aadharError" class="error"></p>
+            </div>
+            <div>
+                <label for="contactno">Contact Number</label>
+                <input type="number" id="contactno" name="contactno" />
+                <p id="contactError" class="error"></p>
+            </div>
+            <div>
+                <label for="gender">Gender: </label>
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male">
+            </div><br>
+
+            <div>
+                <label for="kr">Karnataka Resident: </label>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" name="kr" value="yes">
+                <label for="no">No</label>
+                <input type="radio" id="no" name="kr" value="no">
+                <p id="karnatakaError" class="error"></p>
+            </div><br>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+                <p id="passError" class="error"></p>
+            </div>
+            <div>
+                <label for="confpassword">Confirm Password</label>
+                <input type="password" id="confpassword" name="confpassword" />
+                <p id="confPassError" class="error"></p>
+            </div>
+            <input type="submit" value="Register" id="btn">
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("#registrationForm");
+            const aadharInput = document.querySelector("#aadharno");
+            const contactInput = document.querySelector("#contactno");
+            const passwordInput = document.querySelector("#password");
+            const confirmPasswordInput = document.querySelector("#confpassword");
+            const krYesInput = document.querySelector("#yes");
+            const karnatakaError = document.querySelector("#karnatakaError");
+            const btn = document.querySelector("#btn");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                let isValid = true;
+
+                aadharError.textContent = "";
+                contactError.textContent = "";
+                passError.textContent = "";
+                karnatakaError.textContent = "";
+                confPassError.textContent = "";
+
+                if (aadharInput.value == "") {
+                    aadharError.textContent = "Aadhar Number is required.";
+                    isValid = false;
+                } else if (aadharInput.value.length < 12 || aadharInput.value.length > 12) {
+                    aadharError.textContent = "Invalid Aadhar Number";
+                    isValid = false;
+                }
+
+                if (!contactInput.value.trim()) {
+                    contactError.textContent = "Contact number is required.";
+                    isValid = false;
+                }
+
+
+                if (!passwordInput.value) {
+                    passError.textContent = "Password is required.";
+                    isValid = false;
+                } else if (!hasSpecialCharacters(passwordInput.value)) {
+                    passError.textContent = "Password must contain special characters.";
+                    isValid = false;
+                }
+
+                if (!confirmPasswordInput.value) {
+                    confPassError.textContent = "Confirm Password is required.";
+                    isValid = false;
+                } else if (passwordInput.value !== confirmPasswordInput.value) {
+                    confPassError.textContent = "Passwords do not match.";
+                    isValid = false;
+                }
+                if (!krYesInput.checked) {
+                    karnatakaError.textContent = "You are not eligible for this scheme.";
+                    isValid = false;
+                } else {
+                    karnatakaError.textContent = "";
+                }
+
+
+                if (isValid) {
+                    const userData = {
+                        aadharno: aadharInput.value,
+                        contactno: contactInput.value,
+                        gender: document.querySelector('input[name="gender"]:checked').value,
+                        kr: krYesInput.value,
+                        password: passwordInput.value
+                    };
+
+                    addUserToLocalStorage(userData);
+                    alert("Registration successfull")
+                    form.reset();
+                }
+            });
+
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function hasSpecialCharacters(text) {
+                const specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                return specialCharactersRegex.test(text);
+            }
+
+            function hasSpecialChars(password) {
+                const specialChars = "!@#$%^&*()_+{}[]:;<>,.?~\\/-";
+                for (const char of password) {
+                    if (specialChars.includes(char)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
+            function addUserToLocalStorage(userData) {
+                let users = JSON.parse(localStorage.getItem("users")) || [];
+                users.push(userData);
+                localStorage.setItem("users", JSON.stringify(users));
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
